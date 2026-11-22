@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="haven_cache" path="." />
+    <files-path name="haven_files" path="." />
+    <external-files-path name="haven_ext" path="." />
+</paths>

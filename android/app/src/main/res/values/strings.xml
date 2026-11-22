@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Haven</string>
+    <string name="channel_transfers_name">Haven Transfers</string>
+    <string name="channel_transfers_desc">Progress notifications for chunked uploads, downloads, and folder sync</string>
+</resources>

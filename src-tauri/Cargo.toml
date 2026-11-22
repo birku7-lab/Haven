@@ -1,0 +1,65 @@
+[package]
+name = "haven"
+version = "0.1.0"
+description = "Haven Personal Storage Hub — Private Windows Storage Server & Desktop Console"
+authors = ["Haven Storage"]
+edition = "2021"
+
+[lib]
+name = "haven_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-autostart = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["io"] }
+axum = { version = "0.8" }
+rusqlite = { version = "0.32", features = ["bundled", "backup"] }
+sha2 = "0.10"
+hex = "0.4"
+base64 = "0.22"
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["clock"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif", "bmp", "tiff"] }
+qrcode = { version = "0.14", features = ["svg"] }
+rand = "0.8"
+mime_guess = "2"
+tower-http = { version = "0.6", features = ["cors"] }
+dirs = "5"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Storage_FileSystem"] }
+
+[profile.release]
+strip = true
+debug = false
+opt-level = 1
+lto = false
+codegen-units = 1
+incremental = false
+
+[profile.release.package.windows]
+opt-level = 0
+
+[profile.release.package.windows-sys]
+opt-level = 0
+
+[profile.release.package.webview2-com]
+opt-level = 0
+
+[profile.release.package.webview2-com-sys]
+opt-level = 0
+
+[profile.release.package.wry]
+opt-level = 0
+
+[profile.release.package.tauri]
+opt-level = 0

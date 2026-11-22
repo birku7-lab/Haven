@@ -1,0 +1,3 @@
+-keepattributes *Annotation*
+-keepclassmembers class com.havenstorage.mobile.model.** { *; }
+-dontwarn okio.**
